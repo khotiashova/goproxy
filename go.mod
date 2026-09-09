@@ -1,9 +1,10 @@
-module github.com/elazarl/goproxy
+module github.com/khotiashova/goproxy
 
 go 1.24.0
 
 require (
 	github.com/coder/websocket v1.8.14
+	github.com/elazarl/goproxy v1.9.1
 	github.com/stretchr/testify v1.11.1
 	golang.org/x/net v0.50.0
 )
