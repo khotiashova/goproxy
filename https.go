@@ -472,13 +472,6 @@ func (proxy *ProxyHttpServer) handleHttps(w http.ResponseWriter, r *http.Request
 				req.RemoteAddr = r.RemoteAddr
 				ctx.Logf("req %v", r.Host)
 
-				if req.URL == nil {
-					ctx.Warnf("Received malformed request with nil URL from mitm'd client %v", r.Host)
-					// Просто возвращаемся, чтобы закрыть обработку этого конкретного запроса.
-					// Цикл завершится или перейдет к следующему, но паники не будет.
-					return
-				}
-
 				if !req.URL.IsAbs() {
 					// Origin-form request target (/path)
 					// We prioritize req.Host (from the internal request), over r.Host (from the CONNECT request).
