@@ -483,7 +483,9 @@ func (proxy *ProxyHttpServer) handleHttps(w http.ResponseWriter, r *http.Request
 					urlToParse := scheme + "://" + hostToUse + req.URL.String()
 					req.URL, err = url.Parse(urlToParse)
 					if err != nil {
-						ctx.Warnf("Cannot parse URL %s: %v", urlToParse, err)
+						ctx.Warnf("MALFORMED REQUEST DETECTED: Cannot parse URL. "+
+							"Scheme: %q, HostToUse: %q, ReqURLString: %q, FinalUrlToParse: %q, ParseError: %v", 
+							scheme, hostToUse, req.URL.String(), urlToParse, err)
 						return
 					}
 				} else {
